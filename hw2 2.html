@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nilzelly Martins — clinical psychology, psychoanalysis, culture and contemporary life.">
+    <title>Nilzelly Martins | Clinical Psychology</title>
+
+    <style>
+        /* GENERAL WEBSITE STYLE */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background-color: #E8DCC9;
+            color: #4A4036;
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        .site-header {
+            background-color: #E6D8C3;
+            padding: 22px 7%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .brand {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            color: #2F4A3C;
+            text-decoration: none;
+        }
+
+        .site-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .site-header nav a {
+            color: #2F4A3C;
+            text-decoration: none;
+        }
+
+        .site-header nav a:hover,
+        .site-header nav a:focus-visible {
+            text-decoration: underline;
+        }
+
+        /* BUTTONS */
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 25px;
+            background-color: #2F4A3C;
+            color: #F3EBDD;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .header-tools .button {
+            margin-top: 0;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 18px #999083;
+        }
+
+        .button:focus-visible,
+        .site-header a:focus-visible,
+        .profile-sidebar a:focus-visible {
+            outline: 2px solid #A35C3E;
+            outline-offset: 4px;
+        }
+
+        /* HERO — PHONE FIRST */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas:
+                "hero-feature"
+                "hero-action";
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 70px 7% 80px;
+        }
+
+        .hero-feature {
+            grid-area: hero-feature;
+            min-width: 0;
+        }
+
+        .hero-action {
+            grid-area: hero-action;
+            min-width: 0;
+            background-color: #E6D8C3;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .hero-action h2 {
+            font-family: Georgia, serif;
+            color: #2F4A3C;
+            font-size: 26px;
+            font-weight: normal;
+        }
+
+        .eyebrow {
+            color: #A35C3E;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 6vw, 48px);
+            font-weight: normal;
+            line-height: 1.2;
+            color: #2F4A3C;
+            max-width: 750px;
+        }
+
+        .hero p {
+            max-width: 600px;
+        }
+
+        /* The desktop photo advertisement is hidden on phones/tablets. */
+        .desktop-promo {
+            display: none;
+            grid-area: hero-ad;
+            min-width: 0;
+            background-color: #F8F3EA;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .desktop-promo img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: center 35%;
+            border-radius: 8px;
+        }
+
+        .desktop-promo h2 {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            font-weight: normal;
+            color: #2F4A3C;
+        }
+
+        /* MAIN CONTENT — PHONE FIRST */
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .about {
+            background-color: transparent;
+            padding: 65px 7%;
+            min-width: 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas:
+                "feature"
+                "promo"
+                "listing";
+            gap: 30px;
+            align-items: start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .article-feature {
+            grid-area: feature;
+            min-width: 0;
+            background-color: #D7C5AB;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .article-listing {
+            grid-area: listing;
+            min-width: 0;
+            background-color: #F0E5D5;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        /* PHOTO PROMOTION FOR PHONE AND TABLET */
+        .therapy-promo {
+            grid-area: promo;
+            min-width: 0;
+            background-color: #F8F3EA;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .therapy-promo img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: center 35%;
+            border-radius: 8px;
+        }
+
+        .about h2 {
+            font-family: Georgia, serif;
+            font-size: 32px;
+            font-weight: normal;
+            color: #2F4A3C;
+        }
+
+        .about .therapy-promo h2 {
+            font-size: 26px;
+        }
+
+        .about p {
+            max-width: 650px;
+        }
+
+        /* SIDEBAR — HIDDEN ON PHONE */
+        .profile-sidebar {
+            display: none;
+            background-color: #2F4A3C;
+            padding: 30px;
+            color: #F3EBDD;
+        }
+
+        .profile-sidebar h2 {
+            font-family: Georgia, serif;
+            font-size: 26px;
+            font-weight: normal;
+            color: #F3EBDD;
+        }
+
+        .profile-sidebar a {
+            color: #E7B99F;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+
+        /* FOOTER */
+        .site-footer {
+            padding: 25px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* TABLET: 576px TO 991px */
+        @media (min-width: 576px) {
+            .site-header {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .site-header nav {
+                margin-left: auto;
+            }
+
+            .hero {
+                padding: 80px 7%;
+            }
+
+            .about-content {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                grid-template-areas:
+                    "feature promo"
+                    "listing listing";
+            }
+
+            .profile-sidebar {
+                display: block;
+                margin: 0 7% 55px;
+                padding: 30px;
+                border-radius: 8px;
+            }
+        }
+
+        /* DESKTOP: 992px AND UP */
+        @media (min-width: 992px) {
+            .site-header {
+                flex-wrap: nowrap;
+            }
+
+            /* This shared rule is what aligns BOTH groups exactly. */
+            .hero,
+            main {
+                width: calc(100% - 48px);
+                max-width: 1180px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Top: main text | reflection | photograph */
+            .hero {
+                grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) 280px;
+                grid-template-areas: "hero-feature hero-action hero-ad";
+                gap: 30px;
+                padding: 60px 0;
+                align-items: stretch;
+            }
+
+            .desktop-promo {
+                display: block;
+            }
+
+            /* Bottom: articles (two cards) | green sidebar */
+            main {
+                grid-template-columns: minmax(0, 1fr) 280px;
+                gap: 30px;
+                padding: 0 0 60px;
+                align-items: start;
+            }
+
+            .about {
+                padding: 0;
+            }
+
+            .about-content {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+                grid-template-areas: "feature listing";
+                gap: 30px;
+                max-width: none;
+                margin: 0;
+            }
+
+            .therapy-promo {
+                display: none;
+            }
+
+            .profile-sidebar {
+                margin: 0;
+                padding: 35px 25px;
+                align-self: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER: brand, navigation and appointment button -->
+    <header class="site-header">
+        <a class="brand" href="#top">Nilzelly Martins</a>
+
+        <nav aria-label="Main navigation">
+            <a href="#top">Home</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="header-tools">
+            <a class="button" href="mailto:psinilzelly@gmail.com">Request an Appointment</a>
+        </div>
+    </header>
+
+    <!-- HERO: feature, call to action and desktop advertisement -->
+    <section class="hero" id="top">
+        <div class="hero-feature">
+            <p class="eyebrow">Clinical Psychology · Culture · Contemporary Life</p>
+            <h1>What does it mean to be human today?</h1>
+            <p>A space to explore identity, desire, relationships, belonging and the changing world around us.</p>
+        </div>
+
+        <div class="hero-action">
+            <h2>A space for reflection</h2>
+            <p>Discover more about psychology, psychoanalysis and contemporary life.</p>
+            <a class="button" href="#about">Explore More</a>
+        </div>
+
+        <aside class="desktop-promo" aria-label="Online psychotherapy">
+            <img src="images/nilzelly2.jpg" alt="Portrait of Nilzelly Martins smiling">
+            <h2>Online Psychotherapy</h2>
+            <p>A space for your story, wherever life takes you.</p>
+            <a class="button" href="mailto:psinilzelly@gmail.com">Request a Consultation</a>
+        </aside>
+    </section>
+
+    <!-- MAIN: articles and sidebar -->
+    <main>
+        <section class="about" id="about">
+            <div class="about-content">
+                <article class="article-feature">
+                    <h2>About this space</h2>
+                    <p>Exploring the human experience through psychology, psychoanalysis and digital humanities.</p>
+                    <p>A space for questions about identity, desire, relationships, belonging and contemporary life.</p>
+                </article>
+
+                <aside class="therapy-promo" aria-label="Online psychotherapy">
+                    <img src="images/nilzelly2.jpg" alt="Portrait of Nilzelly Martins smiling" loading="lazy">
+                    <h2>Online Psychotherapy</h2>
+                    <p>A space for your history, wherever life takes you.</p>
+                    <a class="button" href="mailto:psinilzelly@gmail.com">Request a consultation</a>
+                </aside>
+
+                <div class="article-listing">
+                    <h2>Reflections on Contemporary Life</h2>
+                    <article>
+                        <h3>What Does It Mean to Belong?</h3>
+                        <p>How do we construct a sense of belonging in a world of movement and change?</p>
+                    </article>
+                    <article>
+                        <h3>Relationships in the Digital Age</h3>
+                        <p>How are digital technologies transforming our experiences of intimacy and connection?</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <aside class="profile-sidebar">
+            <h2>Meet Nilzelly</h2>
+            <p>I am a Brazilian clinical psychologist offering online psychotherapy.</p>
+            <p>My work is informed by psychoanalysis and explores questions of identity, belonging, relationships and contemporary life.</p>
+            <a href="#about">Explore My Approach</a>
+        </aside>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Nilzelly Martins - All Rights Reserved</p>
+    </footer>
+</body>
+</html>
